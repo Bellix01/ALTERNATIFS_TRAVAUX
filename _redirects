@@ -1,0 +1,5 @@
+# Redirection pour prendre en charge le routage côté client (SPA)
+/*    /index.html   200
+
+# Redirection pour la page admin
+/admin  /admin/index.html  200
