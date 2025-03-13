@@ -1,0 +1,13 @@
+.logo {
+    width: 150px !important; /* Set a fixed width */
+    height: auto !important; /* Maintain aspect ratio */
+    max-width: 100%; /* Prevent it from overflowing */
+  }
+  .logo-container {
+    display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;      /* Center vertically (if the container has a fixed height) */
+    /* height: 100%;            */
+  }  
+
+  
