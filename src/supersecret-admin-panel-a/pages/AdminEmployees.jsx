@@ -146,7 +146,7 @@ const AdminEmployees = () => {
     
       setPointageLoading(true);
       try {
-        const response = await fetch('http://127.0.0.1:5000/api/fetchEmployees');
+        const response = await fetch('https://bellix.pythonanywhere.com/api/fetchEmployees');
         if (!response.ok) {
           throw new Error('Failed to fetch employees');
         }
@@ -170,7 +170,7 @@ const AdminEmployees = () => {
     
     const fetchNewEmployees = async () => {
   try {
-    const response = await fetch('http://127.0.0.1:5000/api/fetchNewEmployees');
+    const response = await fetch('https://bellix.pythonanywhere.com/api/fetchNewEmployees');
     if (!response.ok) {
       throw new Error('Failed to fetch new employees');
     }
@@ -225,7 +225,7 @@ const onDeleteEmp = async () => {
     prevData.filter(row => !rowsToDelete.some(deletedRow => deletedRow.employeeid === row.employeeid))
   );
   try {
-    const response = await fetch('http://127.0.0.1:5000/api/deleteEmployees',{
+    const response = await fetch('https://bellix.pythonanywhere.com/api/deleteEmployees',{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(rowsToDelete),
@@ -324,7 +324,7 @@ const fetchSalariesForEmp = (value) => {
       .filter((entry) => entry.Status !== undefined); // Filter out rows with no data for the current day
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/submitPointage', {
+      const response = await fetch('https://bellix.pythonanywhere.com/api/submitPointage', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -352,7 +352,7 @@ const fetchSalariesForEmp = (value) => {
         phonenumber: emp.phone && emp.phone.trim() !== '' ? emp.phone : null,
       }));
       console.log("Payload being sent to the server:", employees);
-      const response = await fetch('http://127.0.0.1:5000/api/addEmployees', {
+      const response = await fetch('https://bellix.pythonanywhere.com/api/addEmployees', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(employees)
@@ -381,7 +381,7 @@ const fetchSalariesForEmp = (value) => {
         return;
       }
   
-      const response = await fetch("http://127.0.0.1:5000/api/updatePointage", {
+      const response = await fetch("https://bellix.pythonanywhere.com/api/updatePointage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -433,7 +433,7 @@ const fetchSalariesForEmp = (value) => {
     const [submittedDates, setSubmittedDates] = useState([]);
     const fetchSubmittedDates = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5000/api/getSubmittedDates');
+        const response = await fetch('https://bellix.pythonanywhere.com/api/getSubmittedDates');
         if (!response.ok) throw new Error('Failed to fetch submitted dates');
         const dates = await response.json();
         setSubmittedDates(dates);
@@ -564,7 +564,7 @@ const salariesColumns = useMemo (()=>
         Date: adv.date.format('YYYY-MM-DD'),
       }));
   
-      const response = await fetch('http://127.0.0.1:5000/api/addAdvances', {
+      const response = await fetch('https://bellix.pythonanywhere.com/api/addAdvances', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -593,7 +593,7 @@ const salariesColumns = useMemo (()=>
 
     setLoading(true);
     try {
-      let url = `http://127.0.0.1:5000/api/fetchSalaries?start_date=${startDate.format("YYYY-MM-DD")}&end_date=${endDate.format("YYYY-MM-DD")}`;
+      let url = `https://bellix.pythonanywhere.com/api/fetchSalaries?start_date=${startDate.format("YYYY-MM-DD")}&end_date=${endDate.format("YYYY-MM-DD")}`;
 
       if (!fetchingAll && selectEmpForSalaries.length > 0) {
         url += `&employee_ids=${selectEmpForSalaries.join(",")}`; // Pass selected employees
