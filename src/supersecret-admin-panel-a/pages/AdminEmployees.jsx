@@ -132,7 +132,12 @@ const AdminEmployees = () => {
         }
     }
 };
-  
+
+  const handleWeekChange = (date) => {
+    if (date) {
+      setCurrentWeek(date.startOf('week')); 
+    }
+  };
     // Load saved reports from localStorage on first render
     useEffect(() => {
       const savedReports = JSON.parse(localStorage.getItem("reports")) || [];
@@ -658,6 +663,15 @@ const salariesColumns = useMemo (()=>
               >Employees Pointage Management</h2>
              
             <div>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+                <DatePicker
+                  picker="week"
+                  value={currentWeek}
+                  onChange={handleWeekChange}
+                  format="YYYY-[Week]WW"
+                  style={{ width: '200px' }}
+                />
+              </div>
               {/* For Add advances - START */}
               <div style={{display:'flex', justifyContent:'right', gap:'25px', marginBottom:'10px'}}>
                 <div>
