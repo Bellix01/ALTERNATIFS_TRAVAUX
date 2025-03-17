@@ -117,7 +117,7 @@ const AdminEmployees = () => {
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                console.log("PDF downloaded successfully!");
+                // console.log("PDF downloaded successfully!");
             }
         };
 
@@ -213,7 +213,7 @@ for (let i = 0; i < attendanceData.length; i++) {
 const rowSelection = {
   onChange: (selectedRowKeys, selectedRows) => {
     setRowsToDelete(selectedRows);
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
     if(selectedRowKeys.length >= 1){
       setToDelete(true);
     }
@@ -249,7 +249,7 @@ const onDeleteEmp = async () => {
 };
 const onChangeFetching = (e) => {
   const isFetchingAll = e.target.value === "all";
-  console.log(`Radio checked: ${isFetchingAll}`);
+  // console.log(`Radio checked: ${isFetchingAll}`);
 
   setFetchingAll(isFetchingAll);
   if (isFetchingAll) {
@@ -270,7 +270,7 @@ useEffect(() => {
 
 const fetchSalariesForEmp = (value) => {
   setSelectEmpForSalaries(value);
-  console.log(`selected ${selectEmpForSalaries}`);
+  // console.log(`selected ${selectEmpForSalaries}`);
 };
 
   const handleTabChange = (key) => {
@@ -380,7 +380,7 @@ const fetchSalariesForEmp = (value) => {
   const updateAttendance = useCallback(async () => {
     try {
       const payload = Object.values(modifiedAttendance); 
-      console.log(payload);
+      // console.log(payload);
       if (payload.length === 0) {
         message.warning("No changes detected.");
         return;
@@ -557,8 +557,6 @@ const salariesColumns = useMemo (()=>
     ),
   },
 ], []);
-  // const goToPreviousWeek = () => setCurrentWeek(currentWeek.clone().subtract(1, 'week'));
-  // const goToNextWeek = () => setCurrentWeek(currentWeek.clone().add(1, 'week'));
   
   // Function For Giving Advances
   const handleAdvanceSubmit = async (values) => {
@@ -663,17 +661,18 @@ const salariesColumns = useMemo (()=>
               >Employees Pointage Management</h2>
              
             <div>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
-                <DatePicker
-                  picker="week"
-                  value={currentWeek}
-                  onChange={handleWeekChange}
-                  format="YYYY-[Week]WW"
-                  style={{ width: '200px' }}
-                />
-              </div>
+           
               {/* For Add advances - START */}
               <div style={{display:'flex', justifyContent:'right', gap:'25px', marginBottom:'10px'}}>
+                   <div >
+                      <DatePicker
+                        picker="week"
+                        value={currentWeek}
+                        onChange={handleWeekChange}
+                        format="YYYY-[Week]WW"
+                        style={{ width: '200px' }}
+                      />
+                    </div>
                 <div>
                   <Button type="primary" onClick={() => setAdvanceOpen(true)}>
                     <PlusCircleOutlined  style={{ fontSize: '20px' }} />
