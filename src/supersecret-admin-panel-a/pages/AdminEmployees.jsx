@@ -663,7 +663,7 @@ const salariesColumns = useMemo (()=>
               >Employees Pointage Management</h2>
              
             <div>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
                 <DatePicker
                   picker="week"
                   value={currentWeek}
